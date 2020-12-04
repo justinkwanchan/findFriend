@@ -1,0 +1,19 @@
+{
+  "name": "find_friend_stretch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "findFriend.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
+  }
+}
