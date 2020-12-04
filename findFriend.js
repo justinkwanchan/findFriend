@@ -11,11 +11,6 @@
 
 // If the contact requested or if the field requested is not found, then return "Not found".
 
-const findFriend = (data, contactName, field) => {
-  
-};
-
-
 
 // EXAMPLE DATA BELOW
 const contacts = [
@@ -50,3 +45,30 @@ const contacts = [
     friends: ["Abbott", "Laurel"]
   }
 ];
+
+const findFriend = (data, contactName, field) => {
+  // Contact list does not contain contact name
+  const nameArray = data.map(obj => obj.name);
+  if (!nameArray.includes(contactName)) {
+    return 'Not found';
+  }
+  
+  const firstFriend = data.filter(obj => obj.name === contactName)[0].friends[0];
+
+  // Person's friend does not have specified field
+  if (!(field in data.filter(obj => obj.name === firstFriend)[0])) {
+    return 'Not found';
+  }
+
+  /*************************************************************/
+  /******************** ES6 SYNTAX MAGIC!!! ********************/
+  /*************************************************************/
+  const firstFriendObj = data.filter(obj => obj.name === firstFriend);
+  const { name, [field]: _ } = firstFriendObj[0];
+
+  return { name, [field]: _ };
+};
+
+console.log(findFriend(contacts, 'Buster', 'email'));
+
+module.exports = { findFriend };
